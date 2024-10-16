@@ -1,0 +1,191 @@
+# Clean Architecture Python Project.
+
+Proyecto de Web API en FastAPI con Python aplicando los principios de Clean Code, inyección de dependencias y usando la arquitectura de Clean Architecture apuntando a una Base de Datos de MySQL o MariaDb.
+
+## Requisitos generales
+* Tener instalado algun editor de código fuente como Visual Studio Code o Pycharm.
+* Tener instalado MySQL o MariaDb como gestor de Base de Datos.
+
+### Windows
+* Instalar el [compilador de Python](https://www.python.org/downloads/windows/) como Administrador. Debe instalarse todos sus componentes y activar algunas configuraciónes adicionales del sistema operativo de Windows como permitir que los nombres de las carpetas tengan nombres largos. Una vez instalado Python, reinicie el equipo y pruebe com el comando: ```$ python --version```
+
+### MacOS
+* Siga las instrucciones de instalación en este [enlace.](https://www.python.org/downloads/macos/)
+
+### Linux
+* Para en el caso de Linux Ubuntu y sus variantes, se debe instalar **pip** para instalar cualquier paquete en Python:
+
+```
+$ sudo apt install python3-pip -yq
+```
+* Para ejecutar FastApi, debe instalarse **uvicorn**, que es un servidor local para aplicaciones FastApi:
+
+```
+$ sudo apt install uvicorn -yq
+```
+* Con esto, ya se puede ejecutar cualquier proyecto de FastApi de Python ejecutando: ``` $ uvicorn main:app --reload ```. Pero usando Visual Studio Code con los componentes adicionales mencionados en esta descripción se facilita la compilación de código fuente de este proyecto.
+* Para otras distribuciones de Linux, el proceso es similar.
+
+### Otras plataformas
+
+* Siga las instrucciones de instalación en este [enlace.](https://www.python.org/download/other/)
+
+## Variables de entorno
+Deben configurarse las siguientes variables de entorno para su correcta ejecución:
+
+```
+DATABASE_URL = mysql+pymysql://username:password@host:3306/database_name
+API_KEY = myapikey
+POOL_SIZE = 20
+MAX_OVERFLOW = 0
+POOL_TIMEOUT = 30
+POOL_RECYCLE = 1800
+MAX_NUMBER_CONCURRENT_REQUESTS = 52
+MAX_EXECUTION_TIME = 1200
+REQUEST_MAX_NUMBER = 100
+```
+Este proyecto tiene los paquetes pymysl y psycopg2 para conexiones a PostgreSQL.
+
+### Windows
+En la ventana de **Variables de Entorno** guardar estas variables.
+
+### No Windows
+En Mac, Linux, UNIX y otras plataformas, debe guardarse las variables de entorno de la siguente manera:
+
+```
+export DATABASE_URL = mysql+pymysql://username:password@host:3306/database_name
+export API_KEY = myapikey
+export POOL_SIZE = 20
+export MAX_OVERFLOW = 0
+export POOL_TIMEOUT = 30
+export POOL_RECYCLE = 1800
+export MAX_NUMBER_CONCURRENT_REQUESTS = 52
+export MAX_EXECUTION_TIME = 1200
+export REQUEST_MAX_NUMBER = 100
+```
+En Linux Ubuntu, mantener estas variables editando el archivo ```~/.bashrc``` escribiendo las líneas anteriormente mencionadas y ejecutar el siguiente comando para que se guarden las variables y reiniciar el equipo:
+
+```
+$ source ~/.bashrc && sudo reboot
+```
+Las variables de entorno ya están cargadas al arrancar el equipo y se puede ejecutar este proyecto sin problema. 
+
+## Instalación de paquetes.
+Ejecutar este comando para instalar los componentes de Python en el equipo:
+
+```
+$ pip install -r requeriments.txt
+```
+
+Lo más sano es crear un entorno virtual:
+
+```
+$ sudo python3 -m venv venv
+$ source venv/bin/activate
+$ pip freeze > requirements.txt
+$ pip install -r requirements.txt
+$ deactivate
+```
+
+En el caso de Windows, será esto:
+
+```
+$ pip install virtualenv
+$ cd my-project
+$ virtualenv --python C:\Path\To\Python\python.exe venv
+$ .\venv\Scripts\activate
+$ pip freeze > requirements.txt
+$ pip install -r requirements.txt
+$ deactivate
+```
+## Visual Studio Code
+En caso de que no se tenga alguna configuración para correr este proyecto, agregar en la carpeta **./vscode** un archivo llamado **launch.json** con la siguiente estructura:
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Depurador de Python: FastAPI",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--reload"
+            ],
+            "jinja": true,
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "env": {"PYTHONUNBUFFERED": "1"}
+        }
+    ]
+}
+```
+
+Los componentes necesarios para ejecutar y depurar este proyecto son:
+
+* Project Manager
+* AREPL for python
+* Django
+* Python C++ Debugger
+* Python One Dark
+* mdoc - Markdown Documentation Viewer
+* Ruff
+* gitignore
+* python-snippets
+* Dash
+* Python Development Extensions Pack
+* PyInit
+* Git Extension Pack
+* Git History
+* Python Environment Manager
+* Python Extension Pack
+* GitLens — Git supercharged
+* CPython Extension Pack
+* Python Config
+* Python Dev Extension Pack
+* Darcula PyCharm Theme
+* Test Explorer UI
+* Python Resource Monitor
+* Python Indent
+* Python Test Explorer for Visual Studio Code
+* Git Graph
+* Mintlify Doc Writer for Python, JavaScript, TypeScript, C++, PHP, Java, * autopep8
+* Black Formatter
+* Python Debugger
+* isort
+* Mypy Type Checker
+* Python
+* Pylance
+* Jupyter
+* Jupyter Keymap
+* Jupyter Notebook Renderers
+* Jupyter Cell Tags
+* Jupyter Slide Show
+* C/C++
+* Test Adapter Converter
+* autoDocstring - Python Docstring Generator
+* Python Type Hint
+* One Monokai Python
+* Cold Python Theme
+* Postman
+* XML
+* YAML
+* SonarLint
+* Sourcery
+* Code Spell Checker
+* Even Better TOML
+* Cython
+* Djaneiro - Django Snippets
+* Wolf
+* IntelliCode API Usage Examples
+* IntelliCode
+* Jinja
+* LiveCode for python
+
+
+
+## Base de Datos
+El script de Base de Datos para MariaDB o MySQL se encuentra en la carpeta **init_db**. Antes de ejecutar este proyecto, ejecute el script SQL en una Base de Datos creada en MariaDB o MySQL.
+
+Serìa todo. Disfrutenlo.
